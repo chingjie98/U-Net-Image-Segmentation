@@ -17,7 +17,6 @@ class DoubleConv(nn.Module):
         return self.conv_op(x)
 
 
-
 class DownSample(nn.Module):
     # represented by the red down arrow in the original report after the 2 blue arrows
     def __init__(self, in_channels, out_channels):
@@ -31,3 +30,14 @@ class DownSample(nn.Module):
 
         return down, p
 
+class UpSample(nn.Module):
+    # represented by the green up arrow and 2 blue arrows
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        self.up = nn.ConvTranspose2d(in_channels, in_channels//2, kernel_size=2, stride=2)
+        self.conv = DoubleConv(in_channels, out_channels)
+    
+    def forward(self, x1, x2):
+        x1 = self.up(x1)
+        x = torch.cat([x1, x2], 1)
+        return self.conv(x)
