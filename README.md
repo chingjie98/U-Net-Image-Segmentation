@@ -11,8 +11,5 @@ The U-Net architecture is solely based on the authors of:
 Below are the final image segmentation results.
 ![Capture](https://github.com/chingjie98/U-Net-Image-Segmentation/assets/35895182/655db0a0-9564-4358-9394-0a7ec1dd4db5)
 
-However, i have still not figured out how to apply this U-Net architecture to a model with 6 output classes. For example a satellite aerial image. WIP.
-
-
 
 
